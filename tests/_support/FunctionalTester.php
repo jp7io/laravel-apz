@@ -23,4 +23,8 @@ class FunctionalTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
+    public function haveAuthor()
+    {
+        return factory(App\Author::class)->create();
+    }
 }
