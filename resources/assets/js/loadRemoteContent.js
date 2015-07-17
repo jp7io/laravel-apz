@@ -28,5 +28,5 @@ function toList(messages) {
 }
 
 $(function() {
-    loadWeather();
+    //loadWeather();
 });
