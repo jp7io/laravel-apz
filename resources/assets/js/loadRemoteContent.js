@@ -26,3 +26,7 @@ function toList(messages) {
   });
   return converted;
 }
+
+$(function() {
+    loadWeather();
+});
