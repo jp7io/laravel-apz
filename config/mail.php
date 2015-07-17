@@ -54,7 +54,10 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => [
+        'address' => env('MAIL_ADDRESS'),
+        'name' => env('MAIL_NAME')
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -119,6 +122,6 @@ return [
     |
     */
 
-    'pretend' => false,
+    'pretend' => env('MAIL_PRETEND', false),
 
 ];
