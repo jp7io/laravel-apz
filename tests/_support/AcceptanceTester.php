@@ -23,4 +23,13 @@ class AcceptanceTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
+   public function haveAuthor()
+    {
+        return factory(App\Author::class)->create();
+    }
+
+    public function haveArticle()
+    {
+        return factory(App\Article::class)->create();
+    }
 }
