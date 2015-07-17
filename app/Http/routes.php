@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('articles', 'ArticlesController');
+Route::resource('authors', 'AuthorsController');
