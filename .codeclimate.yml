@@ -1,0 +1,12 @@
+languages:
+  PHP: true
+  JavaScript: true
+exclude_paths:
+ - ".bowerrc_files/*"
+ - ".bootstrap/cache/*"
+ - "node_modules/*"
+ - "public/*"
+ - "storage/*"
+ - "tests/_data/*"
+ - "tests/_output/*"
+ - "vendor/*"

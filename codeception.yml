@@ -19,3 +19,8 @@ modules:
             user: ''
             password: ''
             dump: tests/_data/dump.sql
+coverage:
+    enabled: true
+    c3_url: 'http://localhost:8000'
+    include:
+        - app/*

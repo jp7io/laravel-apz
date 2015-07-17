@@ -10,3 +10,5 @@ dump.rdb
 .env.testing
 
 tests/_output/*
+c3.php
+build
