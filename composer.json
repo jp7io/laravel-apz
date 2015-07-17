@@ -53,6 +53,10 @@
         ],
         "post-create-project-cmd": [
             "php artisan key:generate"
+        ],
+        "compile": [
+            "./node_modules/.bin/bower install",
+            "./node_modules/.bin/gulp --production"
         ]
     },
     "config": {
