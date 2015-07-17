@@ -12,16 +12,19 @@
             <th>Delete</th>
             <th>Recommend</th>
             <th>Title</th>
+            <th>Author</th>
         </tr>
         @foreach ($articles as $article)
             <tr>
                 <td>{!! link_to_route('articles.edit', 'Edit', $article->id, ['class' => 'btn btn-default']) !!}</td>
                 <td>
-                    {!! link_to_route('articles.destroy', 'Delete', $article->id,
-                    ['data-method' => 'DELETE', 'class' => 'btn btn-warning']) !!}
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['articles.destroy', $article->id]]) !!}
+                        <button type="submit" class="btn btn-warning">Delete</button>
+                    {!! Form::close() !!}
                 </td>
                 <td>{!! link_to_route('articles.recommendations.create', 'Recommend', $article->id) !!}</td>
                 <td>{!! link_to_route('articles.show', $article->title, $article->id) !!}</td>
+                <td>{!! $article->author->name !!}</td>
             </tr>
         @endforeach
     </table>

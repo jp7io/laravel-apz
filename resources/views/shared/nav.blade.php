@@ -14,6 +14,7 @@
             <ul class="nav navbar-nav">
                 <li>{!! link_to_route('articles.index', 'Articles') !!}</li>
                 <li>{!! link_to_route('authors.index', 'Authors') !!}</li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbar-text">Sao Paulo: {{ $weather->temp }} Celsius. Last update {{ $weather->updated_at }}</li>
             </ul>
