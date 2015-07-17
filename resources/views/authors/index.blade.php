@@ -1,6 +1,7 @@
 @extends($template)
 
 @section('content')
+    @include('shared.alert')
     <h1>Authors</h1>
     {!! link_to_route('authors.create', 'New Author', null, ['class' => 'btn btn-primary btn-lg']) !!}
     <table class="table">
