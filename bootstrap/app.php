@@ -52,4 +52,8 @@ $app->singleton(
 |
 */
 
+if (!empty($argv) && in_array('--env=testing', $argv)) {
+    $app->loadEnvironmentFrom('.env.testing');
+}
+
 return $app;
