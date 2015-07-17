@@ -3,3 +3,6 @@
 Homestead.yaml
 .env
 /storage/*.sqlite
+/bower_components
+/public/js/*
+/public/css/

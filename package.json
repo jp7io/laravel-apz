@@ -1,10 +1,14 @@
 {
   "private": true,
-  "devDependencies": {
-    "gulp": "^3.8.8"
-  },
   "dependencies": {
+    "bootstrap-sass": "^3.0.0",
+    "bower": "~1.4.1",
+    "gulp": "^3.8.8",
     "laravel-elixir": "^2.0.0",
-    "bootstrap-sass": "^3.0.0"
-  }
+    "main-bower-files": "^2.9.0"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "bower_components"
+  ]
 }

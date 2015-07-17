@@ -1,0 +1,22 @@
+{
+  "name": "laravel-apz",
+  "version": "0.0.0",
+  "authors": [
+    "JP7 Internet"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "homepage": "www.jp7.com.br",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5"
+  }
+}

@@ -1,4 +1,5 @@
 var elixir = require('laravel-elixir');
+var bowerFiles = require('main-bower-files');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,4 +14,5 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss');
+    mix.scripts(bowerFiles('**/*.js'), 'public/js/3rd-party.js', '/');
 });
