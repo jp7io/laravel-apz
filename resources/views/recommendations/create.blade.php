@@ -9,6 +9,7 @@
                 {!! Form::label('email', 'Email:') !!}
                 {!! Form::text('email', null, ['class' => 'form-control']) !!}
             </div>
+            {!! Recaptcha::render() !!}
             {!! Form::submit('Send Recommendation', ['class' => 'btn btn-primary']) !!}
         {!! Form::close() !!}
     </p>
