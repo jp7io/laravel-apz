@@ -9,6 +9,8 @@
         <section id="content" class="container-fluid">
             @yield('content')
         </section>
+        @include('shared.modal')
         <script type="text/javascript" src='/js/3rd-party.js'></script>
+        <script type="text/javascript" src='/js/app.js'></script>
     </body>
 </html>

@@ -3,7 +3,9 @@
 @section('content')
     @include('shared.alert')
     <h1>Articles</h1>
-    {!! link_to_route('articles.create', 'New Article', null, ['class' => 'btn btn-primary btn-lg']) !!}
+    {!! link_to_route('articles.create', 'New Article', null, [
+        'class' => 'btn btn-primary btn-lg',
+        'data-remote' => 'true' ]) !!}
     <table class="table">
         <tr>
             <th>Edit</th>
