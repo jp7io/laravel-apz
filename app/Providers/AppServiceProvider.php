@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*', function ($view) {
+            $template = 'layouts.html';
+            $view->with(compact('template'));
+        });
     }
 
     /**
