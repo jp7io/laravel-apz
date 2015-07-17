@@ -6,3 +6,4 @@ Homestead.yaml
 /bower_components
 /public/js/*
 /public/css/
+dump.rdb
