@@ -1,0 +1,27 @@
+EnvironmentConfigurationMetadata:
+  Description: Configuration created from the EB CLI using "eb config save".
+  DateModified: '1437419238000'
+  DateCreated: '1437419238000'
+AWSConfigurationTemplateVersion: 1.1.0.0
+EnvironmentTier:
+  Name: WebServer
+  Type: Standard
+SolutionStack: 64bit Amazon Linux 2015.03 v1.4.3 running PHP 5.5
+OptionSettings:
+  aws:elb:loadbalancer:
+    CrossZone: true
+  aws:elasticbeanstalk:command:
+    BatchSize: '30'
+    BatchSizeType: Percentage
+  aws:autoscaling:launchconfiguration:
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+  aws:elb:policies:
+    ConnectionDrainingEnabled: true
+  aws:autoscaling:updatepolicy:rollingupdate:
+    RollingUpdateType: Health
+    RollingUpdateEnabled: true
+  aws:elb:healthcheck:
+    Interval: '30'
+  aws:elasticbeanstalk:container:php:phpini:
+    document_root: '/public'
+    composer_options: '--no-dev'
