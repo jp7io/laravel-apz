@@ -6,6 +6,29 @@
 [![Code Climate](https://codeclimate.com/github/jp7internet/laravel-apz/badges/gpa.svg)](https://codeclimate.com/github/jp7internet/laravel-apz)
 [![Test Coverage](https://codeclimate.com/github/jp7internet/laravel-apz/badges/coverage.svg)](https://codeclimate.com/github/jp7internet/laravel-apz/coverage)
 
-* Live Demo: https://laravel-apz.herokuapp.com
-* Step-by-Step Guide: https://github.com/jp7internet/laravel-apz/wiki
-* Screenshots: https://github.com/jp7internet/laravel-apz/wiki/Screenshots
+####  Live Demo
+
+* Heroku: https://laravel-apz.herokuapp.com
+* Forge/Digital Ocean: http://laravel-apz.jp7.com.br
+
+#### Step-by-Step Guide
+
+https://github.com/jp7internet/laravel-apz/wiki
+
+#### Screenshots
+
+https://github.com/jp7internet/laravel-apz/wiki/Screenshots
+
+#### Includes
+
+* Restful CRUD and associations
+* API first approach
+* Asset management with Bower, Elixir and Gulp
+* CSS with Bootstrap
+* Ajax CRUD with UJS
+* Mailer
+* Queues with Redis
+* Functional and acceptance tests with Codeception and Selenium
+* Continuous integration with Code Climate and Codeship
+* Deploy with Heroku and Laravel Forge
+* Monitoring with Papertrail
