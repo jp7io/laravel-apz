@@ -1,6 +1,6 @@
 # Laravel Apz
 
-#### The guide to build a Laravel app from a to z.
+#### The guide to build a Laravel 5.1 app from a to z.
 
 [![Build Status](https://codeship.com/projects/7d4edbc0-0ef3-0133-9bce-226e55fae8ac/status?branch=master)](https://codeship.com/projects/91866)
 [![Code Climate](https://codeclimate.com/github/jp7internet/laravel-apz/badges/gpa.svg)](https://codeclimate.com/github/jp7internet/laravel-apz)
@@ -21,6 +21,7 @@ https://github.com/jp7internet/laravel-apz/wiki/Screenshots
 
 #### Includes
 
+* Laravel 5.1
 * Restful CRUD and associations
 * API first approach
 * Asset management with Bower, Elixir and Gulp
