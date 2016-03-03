@@ -16,6 +16,8 @@ class WeatherApi
 
     public function update($urlApi = 'http://api.openweathermap.org/data/2.5/weather?q=Sao_Paulo,br&units=metric')
     {
+        $urlApi .= ('&APPID=' . getenv('WEATHER_APPID'));
+
         $json = file_get_contents($urlApi);
         $response = json_decode($json);
         $data = $response->main;
