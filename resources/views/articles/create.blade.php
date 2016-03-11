@@ -1,4 +1,4 @@
-@extends($template)
+@extends($layout)
 
 @section('content')
   {!! Form::open(['route' => 'articles.store', 'data-remote' => $remote, 'id' => 'articles-form']) !!}
