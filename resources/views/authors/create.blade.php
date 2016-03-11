@@ -1,4 +1,4 @@
-@extends($template)
+@extends($layout)
 
 @section('content')
   {!! Form::open(['route' => 'authors.store']) !!}
