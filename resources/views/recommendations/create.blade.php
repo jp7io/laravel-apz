@@ -5,7 +5,7 @@
     <h4>Recommend "{{ $article->title }}" by e-mail</h4>
     <p>
         {!! Form::open(['route' => ['articles.recommendations.store', $article->id]]) !!}
-            <div class='form-group'>
+            <div class="form-group">
                 {!! Form::label('email', 'Email:') !!}
                 {!! Form::text('email', null, ['class' => 'form-control']) !!}
             </div>
