@@ -12,7 +12,7 @@
         </tr>
         @foreach ($authors as $author)
             <tr>
-                <td>{!! link_to_route('authors.edit', 'Edit', $author->id, ['class'=> 'btn btn-default']) !!}</td>
+                <td>{!! link_to_route('authors.edit', 'Edit', $author->id, ['class' => 'btn btn-default']) !!}</td>
                 <td>
                     {!! Form::open(['method' => 'DELETE', 'route' => ['authors.destroy', $author->id]]) !!}
                         <button type="submit" class="btn btn-warning">Delete</button>

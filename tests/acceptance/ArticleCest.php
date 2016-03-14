@@ -13,7 +13,7 @@ class ArticleCest
     {
     }
 
-    //tests
+    // tests
     public function createAnValidArticle(AcceptanceTester $I)
     {
         $attributes = [

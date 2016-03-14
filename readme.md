@@ -1,6 +1,6 @@
 # Laravel Apz
 
-#### The guide to build a Laravel 5.1 app from a to z.
+#### The guide to build a Laravel 5.2 app from a to z.
 
 [![Build Status](https://codeship.com/projects/7d4edbc0-0ef3-0133-9bce-226e55fae8ac/status?branch=master)](https://codeship.com/projects/91866)
 [![Code Climate](https://codeclimate.com/github/jp7internet/laravel-apz/badges/gpa.svg)](https://codeclimate.com/github/jp7internet/laravel-apz)
@@ -11,7 +11,7 @@
 * Heroku: https://laravel-apz.herokuapp.com
 * Forge/Digital Ocean: http://laravel-apz.jp7.com.br
 
-#### Step-by-Step Guide
+#### Step-by-Step Tutorial
 
 https://github.com/jp7internet/laravel-apz/wiki
 
@@ -21,7 +21,7 @@ https://github.com/jp7internet/laravel-apz/wiki/Screenshots
 
 #### Includes
 
-* Laravel 5.1
+* Laravel 5.2
 * Restful CRUD and associations
 * API first approach
 * Asset management with Bower, Elixir and Gulp
