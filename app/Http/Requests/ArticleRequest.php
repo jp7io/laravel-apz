@@ -23,10 +23,16 @@ class ArticleRequest extends Request
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => 'required|min:3',
             'content' => 'required',
             'author_id' => 'required',
         ];
+
+        if (!app()->environment('testing')) {
+            $rules['g-recaptcha-response'] = 'required|recaptcha';
+        }
+
+        return $rules;
     }
 }

@@ -12,5 +12,8 @@
     {!! Form::select('author_id', $authors, $article->author_id, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
+    {!! Recaptcha::render() !!}
+</div>
+<div class="form-group">
     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}
 </div>
