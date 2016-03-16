@@ -6,14 +6,18 @@
 [![Code Climate](https://codeclimate.com/github/jp7internet/laravel-apz/badges/gpa.svg)](https://codeclimate.com/github/jp7internet/laravel-apz)
 [![Test Coverage](https://codeclimate.com/github/jp7internet/laravel-apz/badges/coverage.svg)](https://codeclimate.com/github/jp7internet/laravel-apz/coverage)
 
-####  Live Demo
+#### Step-by-Step Tutorial (Start Here!)
+
+https://github.com/jp7internet/laravel-apz/wiki
+
+#### Screencast
+
+https://www.youtube.com/watch?v=AKFoJ2YDPmI&list=PLFEMeqXSeh3xpnSCvL66t87_LcTNYOoFL (portuguese only)
+
+#### Live Demo
 
 * Heroku: https://laravel-apz.herokuapp.com
 * Forge/Digital Ocean: http://laravel-apz.jp7.com.br
-
-#### Step-by-Step Tutorial
-
-https://github.com/jp7internet/laravel-apz/wiki
 
 #### Screenshots
 
