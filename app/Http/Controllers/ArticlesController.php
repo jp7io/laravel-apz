@@ -15,9 +15,9 @@ class ArticlesController extends Controller
 
         if (Request::wantsJson()) {
             return $articles;
-        } else {
-            return view('articles.index', compact('articles'));
         }
+
+        return view('articles.index', compact('articles'));
     }
 
     public function create()
@@ -35,18 +35,18 @@ class ArticlesController extends Controller
 
         if (Request::wantsJson()) {
             return $article;
-        } else {
-            return redirect('articles');
         }
+
+        return redirect('articles');
     }
 
     public function show(Article $article)
     {
         if (Request::wantsJson()) {
             return $article;
-        } else {
-            return view('articles.show', compact('article'));
         }
+
+        return view('articles.show', compact('article'));
     }
 
     public function edit(Article $article)
@@ -63,9 +63,9 @@ class ArticlesController extends Controller
 
         if (Request::wantsJson()) {
             return $article;
-        } else {
-            return redirect('articles');
         }
+
+        return redirect('articles');
     }
 
     public function destroy(Article $article)
@@ -75,8 +75,8 @@ class ArticlesController extends Controller
 
         if (Request::wantsJson()) {
             return (string) $deleted;
-        } else {
-            return redirect('articles');
         }
+
+        return redirect('articles');
     }
 }
