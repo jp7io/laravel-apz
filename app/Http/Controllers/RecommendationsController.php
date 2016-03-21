@@ -21,8 +21,8 @@ class RecommendationsController extends Controller
 
         if (Request::wantsJson()) {
             return ['Your recommendation was sent.'];    
-        } else {
-            return redirect('articles');
         }
+        
+        return redirect('articles');
     }
 }
