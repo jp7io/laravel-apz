@@ -14,9 +14,9 @@ class AuthorsController extends Controller
 
         if (Request::wantsJson()) {
             return $authors;
-        } else {
-            return view('authors.index', compact('authors'));
         }
+
+        return view('authors.index', compact('authors'));
     }
 
     public function create()
@@ -31,18 +31,19 @@ class AuthorsController extends Controller
 
         if (Request::wantsJson()) {
             return $author;
-        } else {
-            return redirect('authors');
         }
+
+        return redirect('authors');
     }
 
     public function show(Author $author)
     {
         if (Request::wantsJson()) {
             return $author;
-        } else {
-            return view('authors.show', compact('author'));
         }
+
+        return view('authors.show', compact('author'));
+
     }
 
     public function edit(Author $author)
@@ -57,9 +58,9 @@ class AuthorsController extends Controller
 
         if (Request::wantsJson()) {
             return $author;
-        } else {
-            return redirect('authors');
         }
+
+        return redirect('authors');
     }
 
     public function destroy(Author $author)
@@ -69,8 +70,8 @@ class AuthorsController extends Controller
 
         if (Request::wantsJson()) {
             return (string) $deleted;
-        } else {
-            return redirect('authors');
         }
+
+        return redirect('authors');
     }
 }
