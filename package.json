@@ -10,5 +10,8 @@
   "cacheDirectories": [
     "node_modules",
     "bower_components"
-  ]
+  ],
+  "engines": {
+    "node": "10.x"
+  }
 }
