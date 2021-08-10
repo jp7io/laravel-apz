@@ -10,12 +10,15 @@ class WeatherApi
 
     public function data()
     {
-        $data = Cache::get('Weather.reads');
-        return Cache::get('Weather.reads') ? $data: $this->update();
+        return Cache::get('Weather.reads') ?: $this->update();
     }
 
-    public function update($urlApi = 'http://api.openweathermap.org/data/2.5/weather?q=Sao_Paulo,br&units=metric')
+    public function update($urlApi = null)
     {
+        if (is_null($urlApi)) {
+            $urlApi = 'https://api.openweathermap.org/data/2.5/weather?q=Sao%20Paulo,br&units=metric&APPID=' . getenv('WEATHER_APPID');
+        }
+
         $json = file_get_contents($urlApi);
         $response = json_decode($json);
         $data = $response->main;
