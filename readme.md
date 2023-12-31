@@ -3,12 +3,12 @@
 #### The guide to build a Laravel 5.2 app from a to z.
 
 [![Build Status](https://codeship.com/projects/7d4edbc0-0ef3-0133-9bce-226e55fae8ac/status?branch=master)](https://codeship.com/projects/91866)
-[![Code Climate](https://codeclimate.com/github/jp7internet/laravel-apz/badges/gpa.svg)](https://codeclimate.com/github/jp7internet/laravel-apz)
-[![Test Coverage](https://codeclimate.com/github/jp7internet/laravel-apz/badges/coverage.svg)](https://codeclimate.com/github/jp7internet/laravel-apz/coverage)
+[![Code Climate](https://codeclimate.com/github/jp7io/laravel-apz/badges/gpa.svg)](https://codeclimate.com/github/jp7io/laravel-apz)
+[![Test Coverage](https://codeclimate.com/github/jp7io/laravel-apz/badges/coverage.svg)](https://codeclimate.com/github/jp7io/laravel-apz/coverage)
 
 #### Step-by-Step Tutorial (Start Here!)
 
-https://github.com/jp7internet/laravel-apz/wiki
+https://github.com/jp7io/laravel-apz/wiki
 
 #### Screencast
 
@@ -21,7 +21,7 @@ https://www.youtube.com/watch?v=AKFoJ2YDPmI&list=PLFEMeqXSeh3xpnSCvL66t87_LcTNYO
 
 #### Screenshots
 
-https://github.com/jp7internet/laravel-apz/wiki/Screenshots
+https://github.com/jp7io/laravel-apz/wiki/Screenshots
 
 #### Includes
 
