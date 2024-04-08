@@ -1,4 +1,4 @@
-@extends($template)
+@extends($layout)
 
 @section('content')
     <div class="jumbotron">

@@ -12,7 +12,7 @@
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
+ * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
  *
  * @SuppressWarnings(PHPMD)
 */
@@ -23,7 +23,7 @@ class AcceptanceTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
-   public function haveAuthor()
+    public function haveAuthor()
     {
         return factory(App\Author::class)->create();
     }

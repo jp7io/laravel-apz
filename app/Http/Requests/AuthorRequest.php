@@ -23,9 +23,16 @@ class AuthorRequest extends Request
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email',
         ];
+
+
+        if (!app()->environment('testing')) {
+            $rules['g-recaptcha-response'] = 'required|recaptcha';
+        }
+
+        return $rules;
     }
 }

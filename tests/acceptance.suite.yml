@@ -7,9 +7,6 @@
 class_name: AcceptanceTester
 modules:
     enabled:
-        - Laravel5:
-            cleanup: false
-            environment_file: .env.testing
         - WebDriver:
             url: http://localhost:8000
             browser: 'firefox'

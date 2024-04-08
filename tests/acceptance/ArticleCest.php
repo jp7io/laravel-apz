@@ -13,7 +13,7 @@ class ArticleCest
     {
     }
 
-    //tests
+    // tests
     public function createAnValidArticle(AcceptanceTester $I)
     {
         $attributes = [
@@ -86,9 +86,9 @@ class ArticleCest
 
     private function submitTheForm(AcceptanceTester $I, $attributes)
     {
-        $I->waitForElement('form', 2);
-        $I->fillField('form #title', $attributes['title']);
-        $I->fillField('form #content', $attributes['content']);
-        $I->click('form .btn-primary');
+        $I->waitForElement('#articles-form', 10);
+        $I->fillField('#articles-form #title', $attributes['title']);
+        $I->fillField('#articles-form #content', $attributes['content']);
+        $I->click('#articles-form .btn-primary');
     }
 }

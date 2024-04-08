@@ -16,8 +16,8 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             $remote = Request::ajax() ? true : null;
-            $template = $remote ? 'layouts.ajax' : 'layouts.html';
-            $view->with(compact('remote', 'template'));
+            $layout = $remote ? 'layouts.ajax' : 'layouts.html';
+            $view->with(compact('remote', 'layout'));
         });
     }
 
