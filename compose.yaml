@@ -1,0 +1,64 @@
+# Production-shaped run of the app: one image, two roles.
+#
+# Secrets come from the environment, never from a file baked into the image, so APP_KEY has to
+# be set before this will start:  APP_KEY=$(php artisan key:generate --show) docker compose up
+x-app: &app
+  build: .
+  image: laravel-apz
+  restart: unless-stopped
+  environment: &env
+    APP_KEY: ${APP_KEY:?set APP_KEY, e.g. APP_KEY=$(php artisan key:generate --show)}
+    APP_ENV: production
+    APP_DEBUG: "false"
+    APP_URL: http://localhost:${APP_PORT:-8012}
+    DB_CONNECTION: sqlite
+    DB_DATABASE: /data/database.sqlite
+    CACHE_STORE: database
+    QUEUE_CONNECTION: database
+    SESSION_DRIVER: database
+    MAIL_MAILER: log
+    OPENWEATHER_KEY: ${OPENWEATHER_KEY:-}
+    OPENWEATHER_CITY: ${OPENWEATHER_CITY:-Sao Paulo,br}
+    RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY:-}
+    RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY:-}
+  volumes:
+    - database:/data
+
+services:
+  app:
+    <<: *app
+    environment:
+      <<: *env
+      RUN_MIGRATIONS: "true"
+    ports:
+      - "${APP_PORT:-8012}:80"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost/up"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+
+  # The base image ships a HEALTHCHECK against Caddy's admin port. These two run no web server,
+  # so they inherit a probe that can never pass and sit there unhealthy for an orchestrator to
+  # restart forever. Disabled rather than redefined: a queue worker's liveness is not an HTTP get.
+  worker:
+    <<: *app
+    depends_on:
+      app:
+        condition: service_healthy
+    command: php artisan queue:work --tries=3 --max-time=3600
+    healthcheck:
+      disable: true
+
+  scheduler:
+    <<: *app
+    depends_on:
+      app:
+        condition: service_healthy
+    command: php artisan schedule:work
+    healthcheck:
+      disable: true
+
+volumes:
+  database:

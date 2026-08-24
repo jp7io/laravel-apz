@@ -69,6 +69,22 @@ Browser tests need Chromium once: `npx playwright install chromium`. `.npmrc` se
 
 Testing is documented in [tests/README.md](tests/README.md).
 
+## Deploy
+
+One image, three roles: the web server, a queue worker and the scheduler. FrankenPHP serves
+`public/` itself, so there is no php-fpm and no nginx.
+
+```sh
+APP_KEY=$(php artisan key:generate --show) docker compose up -d --build
+```
+
+The app answers on http://localhost:8012 (`APP_PORT` to move it). `APP_KEY` is required and comes
+from the environment, never from a file in the image; the sqlite database lives on a named volume
+outside `/app`, because a volume mounted over `/app/database` would shadow `migrations/`.
+
+The image installs `--no-dev`, so `db:seed` will not run there: factories need `fakerphp/faker`.
+That is the point of a production image, not a limitation to work around.
+
 ## Notes
 
 The queue is `database` by default. `predis/predis` ships with the app, so switching to Redis is
