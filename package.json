@@ -1,17 +1,25 @@
 {
-  "private": true,
-  "dependencies": {
-    "bootstrap-sass": "^3.0.0",
-    "bower": "~1.7.7",
-    "gulp": "^3.8.8",
-    "laravel-elixir": "^4.0.0",
-    "main-bower-files": "^2.11.1"
-  },
-  "cacheDirectories": [
-    "node_modules",
-    "bower_components"
-  ],
-  "engines": {
-    "node": "10.x"
-  }
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "e2e:all": "node tests/browser/run-all.mjs",
+        "e2e:articles": "node tests/browser/articles.mjs",
+        "e2e:authors": "node tests/browser/authors.mjs",
+        "e2e:recommendations": "node tests/browser/recommendations.mjs",
+        "e2e:sweep": "node tests/browser/sweep.mjs"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.0.0",
+        "concurrently": "^10.0.3",
+        "laravel-vite-plugin": "^3.1",
+        "playwright": "^1.61.1",
+        "tailwindcss": "^4.0.0",
+        "vite": "^8.0.0"
+    },
+    "optionalDependencies": {
+        "@laravel/multiplex": "^0.4.1"
+    }
 }

@@ -2,37 +2,19 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+use App\Rules\Recaptcha;
+use Illuminate\Foundation\Http\FormRequest;
 
-class ArticleRequest extends Request
+class ArticleRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    /** @return array<string, mixed> */
+    public function rules(): array
     {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        $rules = [
-            'title' => 'required|min:3',
-            'content' => 'required',
-            'author_id' => 'required',
+        return [
+            'title' => ['required', 'min:3'],
+            'content' => ['required'],
+            'author_id' => ['required', 'exists:authors,id'],
+            'g-recaptcha-response' => [new Recaptcha],
         ];
-
-        if (!app()->environment('testing')) {
-            $rules['g-recaptcha-response'] = 'required|recaptcha';
-        }
-
-        return $rules;
     }
 }

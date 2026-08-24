@@ -2,81 +2,87 @@
 
 namespace App\Http\Controllers;
 
-use Request;
 use App\Http\Requests\ArticleRequest;
-use App\Article;
-use App\Author;
+use App\Models\Article;
+use App\Models\Author;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ArticlesController extends Controller
 {
-    public function index()
+    /** @return View|Collection<int, Article> */
+    public function index(Request $request): View|Collection
     {
-        $articles = Article::all();
+        $articles = Article::with('author')->get();
 
-        if (Request::wantsJson()) {
+        if ($request->wantsJson()) {
             return $articles;
         }
 
         return view('articles.index', compact('articles'));
     }
 
-    public function create()
+    public function create(): View
     {
-        $article = new Article;
-        $authors = Author::lists('name', 'id')->all();
-
-        return view('articles.create', compact('article', 'authors'));
+        return view('articles.create', [
+            'article' => new Article,
+            'authors' => Author::orderBy('name')->pluck('name', 'id'),
+        ]);
     }
 
-    public function store(ArticleRequest $request)
+    public function store(ArticleRequest $request): Article|RedirectResponse
     {
-        $article = Article::create($request->all());
+        $article = Article::create($request->validated());
         session()->flash('flash_message', 'Article was stored with success');
 
-        if (Request::wantsJson()) {
+        if ($request->wantsJson()) {
             return $article;
         }
 
-        return redirect('articles');
+        return to_route('articles.index');
     }
 
-    public function show(Article $article)
+    public function show(Request $request, Article $article): View|Article
     {
-        if (Request::wantsJson()) {
+        if ($request->wantsJson()) {
             return $article;
         }
 
         return view('articles.show', compact('article'));
     }
 
-    public function edit(Article $article)
+    public function edit(Article $article): View
     {
-        $authors = Author::lists('name', 'id')->all();
-
-        return view('articles.edit', compact('article', 'authors'));
+        return view('articles.edit', [
+            'article' => $article,
+            'authors' => Author::orderBy('name')->pluck('name', 'id'),
+        ]);
     }
 
-    public function update(ArticleRequest $request, Article $article)
+    public function update(ArticleRequest $request, Article $article): Article|RedirectResponse
     {
-        $article->update($request->all());
+        $article->update($request->validated());
         session()->flash('flash_message', 'Article was updated with success');
 
-        if (Request::wantsJson()) {
+        if ($request->wantsJson()) {
             return $article;
         }
 
-        return redirect('articles');
+        return to_route('articles.index');
     }
 
-    public function destroy(Article $article)
+    public function destroy(Request $request, Article $article): Response|RedirectResponse
     {
-        $deleted = $article->delete();
+        $article->delete();
         session()->flash('flash_message', 'Article was removed with success');
 
-        if (Request::wantsJson()) {
-            return (string) $deleted;
+        if ($request->wantsJson()) {
+            return response()->noContent();
         }
 
-        return redirect('articles');
+        return to_route('articles.index');
     }
 }

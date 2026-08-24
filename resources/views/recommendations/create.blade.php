@@ -1,16 +1,17 @@
-@extends($layout)
+<x-layout title="Recommend an article">
+    <x-alert />
 
-@section('content')
-    @include('shared.alert')
-    <h4>Recommend "{{ $article->title }}" by e-mail</h4>
-    <p>
-        {!! Form::open(['route' => ['articles.recommendations.store', $article->id]]) !!}
-            <div class="form-group">
-                {!! Form::label('email', 'Email:') !!}
-                {!! Form::text('email', null, ['class' => 'form-control']) !!}
-            </div>
-            {!! Recaptcha::render() !!}
-            {!! Form::submit('Send Recommendation', ['class' => 'btn btn-primary']) !!}
-        {!! Form::close() !!}
-    </p>
-@endsection
+    <h2 class="mb-6 text-xl font-semibold tracking-tight">Recommend "{{ $article->title }}" by e-mail</h2>
+
+    <form id="recommendations-form" method="POST" action="{{ route('articles.recommendations.store', $article) }}">
+        @csrf
+
+        <x-form.field name="email" label="E-mail">
+            <x-form.input name="email" type="email" />
+        </x-form.field>
+
+        <x-form.recaptcha />
+
+        <x-button>Send Recommendation</x-button>
+    </form>
+</x-layout>

@@ -1,7 +1,8 @@
-@extends($layout)
+<x-layout title="New Article">
+    <h2 class="mb-6 text-xl font-semibold tracking-tight">New Article</h2>
 
-@section('content')
-    {!! Form::open(['route' => 'articles.store', 'data-remote' => $remote, 'id' => 'articles-form']) !!}
+    <form id="articles-form" method="POST" action="{{ route('articles.store') }}">
+        @csrf
         @include('articles.form', ['submitButtonText' => 'Add Article'])
-    {!! Form::close() !!}
-@endsection
+    </form>
+</x-layout>

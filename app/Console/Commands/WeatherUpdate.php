@@ -2,44 +2,27 @@
 
 namespace App\Console\Commands;
 
+use App\Services\WeatherApi;
 use Illuminate\Console\Command;
-use App\WeatherApi;
 
 class WeatherUpdate extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'weather:update';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Update weather data.';
+    protected $description = 'Fetch the current weather reading and cache it';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function handle(WeatherApi $api): int
     {
-        parent::__construct();
-    }
+        $weather = $api->refresh();
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
-    {
-        $api = new WeatherApi;
-        $data = $api->update();
-        echo json_encode($data) . PHP_EOL;
+        if ($weather === null) {
+            $this->error('No reading. Check services.openweather.key and the upstream API.');
+
+            return self::FAILURE;
+        }
+
+        $this->info("{$weather->city}: {$weather->temperature} Celsius at {$weather->updatedAt}");
+
+        return self::SUCCESS;
     }
 }

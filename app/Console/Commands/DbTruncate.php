@@ -3,53 +3,37 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class DbTruncate extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'db:truncate';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Truncate tables on testing environment.';
+    protected $description = 'Empty every table but migrations. Local and testing only';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    /** SQLite keeps its autoincrement counters in a table truncate cannot touch. */
+    private const SKIP = ['migrations', 'sqlite_sequence'];
+
+    public function handle(): int
     {
-        parent::__construct();
-    }
+        if (! $this->laravel->environment(['local', 'testing'])) {
+            $this->error('Refusing to truncate outside local and testing.');
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
-    {
-        if (!\App::environment('testing')) {
-            echo 'Truncate aborted. You are not on a testing environment.';
-            return;
+            return self::FAILURE;
         }
-        $tables = DB::connection()->getDoctrineSchemaManager()->listTableNames();
 
-        foreach ($tables as $name) {
-            //if you don't want to truncate migrations
-            if ($name == 'migrations') {
-                continue;
-            }
-            DB::table($name)->truncate();
-        }
+        $tables = collect(Schema::getTableListing())
+            ->map(fn (string $table): string => Str::afterLast($table, '.'))
+            ->reject(fn (string $table): bool => in_array($table, self::SKIP, true));
+
+        Schema::withoutForeignKeyConstraints(function () use ($tables): void {
+            $tables->each(fn (string $table) => DB::table($table)->truncate());
+        });
+
+        $this->info("Truncated {$tables->count()} tables.");
+
+        return self::SUCCESS;
     }
 }

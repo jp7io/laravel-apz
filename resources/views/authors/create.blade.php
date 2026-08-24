@@ -1,7 +1,8 @@
-@extends($layout)
+<x-layout title="New Author">
+    <h2 class="mb-6 text-xl font-semibold tracking-tight">New Author</h2>
 
-@section('content')
-    {!! Form::open(['route' => 'authors.store', 'id' => 'authors-form']) !!}
+    <form id="authors-form" method="POST" action="{{ route('authors.store') }}">
+        @csrf
         @include('authors.form', ['submitButtonText' => 'Add Author'])
-    {!! Form::close() !!}
-@endsection
+    </form>
+</x-layout>

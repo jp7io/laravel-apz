@@ -1,7 +1,9 @@
-@extends($layout)
+<x-layout title="Edit Author">
+    <h2 class="mb-6 text-xl font-semibold tracking-tight">Edit Author</h2>
 
-@section('content')
-    {!! Form::model($author, ['method' => 'PATCH', 'route' => ['authors.update', $author->id], 'id' => 'authors-form']) !!}
+    <form id="authors-form" method="POST" action="{{ route('authors.update', $author) }}">
+        @csrf
+        @method('PATCH')
         @include('authors.form', ['submitButtonText' => 'Edit Author'])
-    {!! Form::close() !!}
-@endsection
+    </form>
+</x-layout>

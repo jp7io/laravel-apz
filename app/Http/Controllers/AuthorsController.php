@@ -2,76 +2,80 @@
 
 namespace App\Http\Controllers;
 
-use Request;
 use App\Http\Requests\AuthorRequest;
-use App\Author;
+use App\Models\Author;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AuthorsController extends Controller
 {
-    public function index()
+    /** @return View|Collection<int, Author> */
+    public function index(Request $request): View|Collection
     {
-        $authors = Author::all();
+        $authors = Author::orderBy('name')->get();
 
-        if (Request::wantsJson()) {
+        if ($request->wantsJson()) {
             return $authors;
         }
 
         return view('authors.index', compact('authors'));
     }
 
-    public function create()
+    public function create(): View
     {
-        return view('authors.create');
+        return view('authors.create', ['author' => new Author]);
     }
 
-    public function store(AuthorRequest $request)
+    public function store(AuthorRequest $request): Author|RedirectResponse
     {
-        $author = Author::create($request->all());
+        $author = Author::create($request->validated());
         session()->flash('flash_message', 'Author was stored with success');
 
-        if (Request::wantsJson()) {
+        if ($request->wantsJson()) {
             return $author;
         }
 
-        return redirect('authors');
+        return to_route('authors.index');
     }
 
-    public function show(Author $author)
+    public function show(Request $request, Author $author): View|Author
     {
-        if (Request::wantsJson()) {
+        if ($request->wantsJson()) {
             return $author;
         }
 
         return view('authors.show', compact('author'));
-
     }
 
-    public function edit(Author $author)
+    public function edit(Author $author): View
     {
         return view('authors.edit', compact('author'));
     }
 
-    public function update(AuthorRequest $request, Author $author)
+    public function update(AuthorRequest $request, Author $author): Author|RedirectResponse
     {
-        $author->update($request->all());
+        $author->update($request->validated());
         session()->flash('flash_message', 'Author was updated with success');
 
-        if (Request::wantsJson()) {
+        if ($request->wantsJson()) {
             return $author;
         }
 
-        return redirect('authors');
+        return to_route('authors.index');
     }
 
-    public function destroy(Author $author)
+    public function destroy(Request $request, Author $author): Response|RedirectResponse
     {
-        $deleted = $author->delete();
+        $author->delete();
         session()->flash('flash_message', 'Author was removed with success');
 
-        if (Request::wantsJson()) {
-            return (string) $deleted;
+        if ($request->wantsJson()) {
+            return response()->noContent();
         }
 
-        return redirect('authors');
+        return to_route('authors.index');
     }
 }
