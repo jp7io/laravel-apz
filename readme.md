@@ -9,10 +9,6 @@ mailer and a weather widget, wired the way a Laravel 13 app is wired today.
 
 https://github.com/jp7io/laravel-apz/wiki
 
-> The wiki still describes the Laravel 5.2 build: 17 of its 31 pages walk through Bower, Gulp,
-> Elixir, Codeception, Heroku or Codeship, none of which this codebase uses any more. The
-> narrative holds, the commands do not.
-
 #### Screencast
 
 https://www.youtube.com/watch?v=AKFoJ2YDPmI&list=PLFEMeqXSeh3xpnSCvL66t87_LcTNYOoFL (portuguese only)
