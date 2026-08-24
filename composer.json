@@ -6,7 +6,7 @@
     "keywords": ["laravel", "framework", "tutorial"],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4.1",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0",
         "predis/predis": "^3.6"

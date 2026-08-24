@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=AKFoJ2YDPmI&list=PLFEMeqXSeh3xpnSCvL66t87_LcTNYO
 
 #### Includes
 
-* Laravel 13 on PHP 8.3+
+* Laravel 13 on PHP 8.4.1+
 * Restful CRUD and associations, API first (the same routes answer HTML and JSON)
 * Blade components, form requests and a custom validation rule
 * Ajax CRUD in a native `<dialog>`, over `fetch`, with no frontend framework
